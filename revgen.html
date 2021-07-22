@@ -263,9 +263,11 @@
 
 						<div class="form-group">
 							<div class="col-sm-9 col-sm-offset-5">
+								<div class="checkbox" style="margin:0 0 15px 5px;"><label><input type="checkbox" id="dicedetails" name="dicedetails" value="dicedetails" />Show Dice Details</label></div>
 								<button type="submit" class="btn btn-primary" name="generate" value="Generate">Generate Revenue</button>
 							</div>
 						</div>
+						
 				
 <textarea class="form-control" style="" id="output" name="output"></textarea>
 <!--<input type="text" class="form-control" style="height: 40px; width: 50px;" id="output" name="output">-->
@@ -545,7 +547,6 @@ function getProvinceRevenue(province) {
 			resultLog = result[1];
 			//logFaction += province[3] + " local taxes = " + province[17] + "\n";	// Before Roll20 formatting
 			logFaction += "{{" + province[3] + " local taxes=" + province[17] + "}}";
-
 		}
 		else										
 		{
@@ -571,6 +572,7 @@ function RollDice(diceNum, diceMult, diceAdd)
 	var diceValue = 0;
 	var log = "";
 	var diceLog = "";
+	//var diceDetails = 0;
 	
 	// Roll the dice
 	for (i = 0; i < diceNum; i++) {
@@ -607,7 +609,8 @@ function RollDice(diceNum, diceMult, diceAdd)
 		);
 */
 
-	log = "";
+	// Clear dice log if the dicedetails checkbox is not set
+	if (!$("#dicedetails").is(":checked")) {log = "";}
 
 	return [returnValue, log];
 }
