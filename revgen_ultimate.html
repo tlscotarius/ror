@@ -27,49 +27,215 @@
 		<div class="card mb-2">
 			<div class="card-header font-weight-bold display-6 bg-red">State</div>
 			<div class="card-body bg-yellow">
-
-
-<label class="font-weight-bold" for="validationDefault01">Number of Legions</label>
-<input type="text" class="form-control" id="numlegions name="numlegion">
-
-<label class="font-weight-bold" for="validationDefault02">Number of Fleets</label>
-<input type="text" class="form-control" id="numfleets" name="numfleets">
-
-<label class="font-weight-bold" for="validationDefault03">Type 1 Land Bill</label>
-<input type="text" class="form-control" id="lbtype1" name="lbtype1">
-
-<label class="font-weight-bold" for="validationDefault04">Type 2 Land Bill</label>
-<input type="text" class="form-control" id="lbtype2" name="lbtype2">
-
-<label class="font-weight-bold" for="validationDefault05">Type 3 Land Bill</label>
-<input type="text" class="form-control" id="lbtype3" name="lbtype3">
-
-<label class="font-weight-bold" for="validationDefault06">Active Wars</label>
-<input type="text" class="form-control" id="numactwars" name="numactwars">
-		
-<label class="font-weight-bold" for="validationDefault07">Holder of Pontifex Maximus?</label>
-<select id="pontifexmaximus" name="pontifexmaximus">
-	<option value=""></option>
-	<option value="A">Aquila / Eagle</option>
-	<option value="B">Corona / Wreath</option>
-	<option value="C">Luna / Moon</option>
-	<option value="D">Manus / Hand</option>
-	<option value="E">Parma / Shield</option>
-	<option value="F">Solis / Sun</option>
-</select>
-
-
 				
-<label>Drought Level</label>
-<select id="droughtlevel" name="droughtlevel" title="Select a drought level.">
-	<option value="00">Zero</option>
-	<option value="01">One</option>
-	<option value="02">Two</option>
-	<option value="03">Three</option>
-	<option value="04">Four</option>
-	<option value="05">Five</option>
-</select>
+				<table width="100%" border="0">
+					<tr>
+						<td valign="top" width="20%">
 
+							<div class="container">
+								<div class="row text-center">
+									<div class="col text-center font-weight-bold mb-1">
+										Active Forces
+									</div>
+								</div>
+							
+								<div class="row text-center">
+									
+									<div class="col text-right" style="padding-right:0px;">
+										<div class="mb-1">Legions</div>
+										<div>Fleets</div>
+									</div>
+									
+									<div class="col text-left">
+										<div class="mb-1">
+											<select id="numlegions" name="numlegions">
+												<option value="00">0</option>
+												<option value="01">1</option>
+												<option value="02">2</option>
+												<option value="03">3</option>
+												<option value="04">4</option>
+												<option value="05">5</option>
+												<option value="06">6</option>
+												<option value="07">7</option>
+												<option value="08">8</option>
+												<option value="09">9</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+												<option value="13">13</option>
+												<option value="14">14</option>
+												<option value="15">15</option>
+												<option value="16">16</option>
+												<option value="17">17</option>
+												<option value="18">18</option>
+												<option value="19">19</option>
+												<option value="20">20</option>
+												<option value="21">21</option>
+												<option value="22">22</option>
+												<option value="23">23</option>
+												<option value="24">24</option>
+												<option value="25">25</option>
+											</select>
+										</div>
+										<div>
+											<select id="numfleets" name="numfleets">
+												<option value="00">0</option>
+												<option value="01">1</option>
+												<option value="02">2</option>
+												<option value="03">3</option>
+												<option value="04">4</option>
+												<option value="05">5</option>
+												<option value="06">6</option>
+												<option value="07">7</option>
+												<option value="08">8</option>
+												<option value="09">9</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+												<option value="13">13</option>
+												<option value="14">14</option>
+												<option value="15">15</option>
+												<option value="16">16</option>
+												<option value="17">17</option>
+												<option value="18">18</option>
+												<option value="19">19</option>
+												<option value="20">20</option>
+												<option value="21">21</option>
+												<option value="22">22</option>
+												<option value="23">23</option>
+												<option value="24">24</option>
+												<option value="25">25</option>
+											</select>
+										</div>
+									</div>
+								<div>
+							</div>
+												
+						</td>
+						<td valign="top" width="20%">
+						
+							<div class="container">
+								<div class="row text-center">
+									<div class="col text-center font-weight-bold mb-1">
+										Land Bills
+									</div>
+								</div>
+								<div class="row text-center">
+									
+									<div class="col text-right" style="padding-right:0px;">
+										<div class="mb-1">Type I</div>
+										<div class="mb-1">Type II</div>
+										<div>Type III</div>
+									</div>
+									<div class="col text-left">
+										<div class="mb-1">
+											<select id="lbtype1" name="lbtype1">
+												<option value="00">0</option>
+												<option value="01">1</option>
+											</select>
+										</div>
+										<div class="mb-1">
+											<select id="lbtype2" name="lbtype2">
+												<option value="00">0</option>
+												<option value="01">1</option>
+												<option value="02">2</option>
+											</select>
+										</div>
+										<div>
+											<select id="lbtype3" name="lbtype3">
+												<option value="00">0</option>
+												<option value="01">1</option>
+												<option value="02">2</option>
+												<option value="03">3</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</td>
+						<td valign="top" width="30%">
+						
+							<div class="container">
+								<div class="row text-center">
+									<div class="col text-center font-weight-bold mb-1">
+										Other
+									</div>
+								</div>
+							
+								<div class="row text-center">
+									<div class="col text-right" style="padding-right:0px;">
+										<div class="mb-1">Active Wars</div>
+										<div class="mb-1">Drought Level</div>
+										<div class="mb-1">Pontifex Maximus</div>
+									</div>
+									<div class="col text-left">
+										<div class="mb-1">
+											<select id="numactwars" name="numactwars">
+												<option value="00">0</option>
+												<option value="01">1</option>
+												<option value="02">2</option>
+												<option value="03">3</option>
+												<option value="04">4</option>
+												<option value="05">5</option>
+												<option value="06">6</option>
+												<option value="07">7</option>
+												<option value="08">8</option>
+												<option value="09">9</option>
+											</select>
+										</div>
+										<div class="mb-1">
+											<select id="droughtlevel" name="droughtlevel"">
+												<option value="00">0</option>
+												<option value="01">1</option>
+												<option value="02">2</option>
+												<option value="03">3</option>
+												<option value="04">4</option>
+												<option value="05">5</option>
+												<option value="06">6</option>
+												<option value="07">7</option>
+												<option value="08">8</option>
+												<option value="09">9</option>
+											</select>
+										</div>
+										<div>
+											<select id="pontifexmaximus" name="pontifexmaximus">
+												<option value=""></option>
+												<option value="A">Aquila / Eagle</option>
+												<option value="B">Corona / Wreath</option>
+												<option value="C">Luna / Moon</option>
+												<option value="D">Manus / Hand</option>
+												<option value="E">Parma / Shield</option>
+												<option value="F">Solis / Sun</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+						</td>
+						
+						<td valign="top" width="30%">
+						
+							<div class="container">
+								<div class="row text-center">
+									<div class="col font-weight-bold">
+										Advanced Rules?
+									</div>
+								</div>
+							
+								<div class="row text-center">
+									<div class="col">
+										<div><input class="mr-1" type="checkbox" id="rule201" name="rule201"/> 2.01 Pontifex Maximus</div>
+										<div><input class="mr-1" type="checkbox" id="rule202" name="rule202"/> 2.02 Provincial Wars</div>
+									</div>
+								</div>
+							</div>
+							
+						</td>
+						
+					</tr>
+				</table>
 			
 			</div>
 		</div>
