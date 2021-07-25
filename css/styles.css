@@ -1,12 +1,17 @@
 a, a:hover, a:link, a:visited, a:active {color:#bd0000;}
 
 .bg-custom {background-color:#FEF9E7;}
+.bg-red {background-color:#C0392B}
+.bg-yellow {background-color:#FEF9E7;}
 .signature {font-style: italic;}
 .indexglossary {padding-left: 2.5em;text-indent:-1.5em;}
 .text-living{color:rgb(194, 103, 38);}
 .text-advanced{color:royalblue;}
 .text-example{color:slategray; font-style: italic;}
 .text-green{color:limegreen;}
+.text-yellow{color:#FEF9E7;}
+.display-6{font-size:22px;}
+
 
 #btn-back-to-top {
   display: none; /* Hidden by default */
