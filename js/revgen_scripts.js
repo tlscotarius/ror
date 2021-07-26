@@ -48,9 +48,9 @@ $(document).ready(function(){
 		var concSG           = 0;
 		var concHF           = 0;
 		var concMin          = 0;
+		var concLC           = 0;
 		//var concArm          = 0;
 		//var concSB           = 0;
-		var concLC           = 0;
 		var droughtAG        = 0;
 		var droughtSG        = 0;
 		var droughtLevel     = 0;
@@ -72,6 +72,7 @@ $(document).ready(function(){
 		if ($("#concessionscg").is(":checked")) {concSG = 4;}
 		if ($("#concessionhaf").is(":checked")) {concHF = 3;}
 		if ($("#concessionmin").is(":checked")) {concMin = 3;}
+		if ($("#concessionlac").is(":checked")) {concLC = 3;}
 
 		//if ($("#concessionarm").is(":checked")) {concArm = 0;}
 		//if ($("#concessionshp").is(":checked")) {concSB = 0;}
