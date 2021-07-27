@@ -112,7 +112,7 @@
 							</div>
 												
 						</td>
-						<td valign="top" width="20%">
+						<td valign="top" width="20%" style="border-left: 1px solid #ddd;">
 						
 							<div class="container">
 								<div class="row text-center">
@@ -154,7 +154,7 @@
 							</div>
 
 						</td>
-						<td valign="top" width="30%">
+						<td valign="top" width="35%" style="border-left: 1px solid #ddd;">
 						
 							<div class="container">
 								<div class="row text-center">
@@ -215,19 +215,19 @@
 						
 						</td>
 						
-						<td valign="top" width="30%">
+						<td valign="top" width="25%" style="border-left: 1px solid #ddd;">
 						
 							<div class="container">
 								<div class="row text-center">
 									<div class="col font-weight-bold">
-										Advanced Rules?
+										Advanced Rules
 									</div>
 								</div>
 							
 								<div class="row text-center">
 									<div class="col">
-										<div><input class="mr-1" type="checkbox" id="rule201" name="rule201"/> 2.01 Pontifex Maximus</div>
-										<div><input class="mr-1" type="checkbox" id="rule202" name="rule202"/> 2.02 Provincial Wars</div>
+										<label style="margin-bottom:0px;" ><input class="mr-1" type="checkbox" id="rule201" name="rule201" /> 2.01 Pontifex Maximus</label>
+										<label style="margin-bottom:0px;" ><input class="mr-1" type="checkbox" id="rule202" name="rule202" /> 2.02 Provincial Wars</label>
 									</div>
 								</div>
 							</div>
@@ -245,55 +245,78 @@
 			<div class="card-body bg-yellow">
 				<table width="100%">
 					<tr>
-						<th class="text-center">Active?</th>
-						<th class="text-center">Name</th>
-						<th class="text-center">Number of Senators</th>
-						<th class="text-center">Number of Knights</th>
-						<th class="text-center">Leader Assigned?</th>
+						<td>
+						
+							<table width="100%">
+								<tr>
+									<th valign="bottom" class="text-center">Active</th>
+									<th valign="bottom" class="text-center">Name</th>
+									<th valign="bottom" class="text-center">Senators</th>
+									<th valign="bottom" class="text-center">Knights</th>
+									<th valign="bottom" class="text-center">Leader<br/>Assigned</th>
+								</tr>				
+								<tr>
+									<td class="text-center"><input type="checkbox" id="factionactiveA" name="factionactiveA"/></td>
+									<td class="text-left"><input type="text" class="form-control" id="factionnameA" name="factionnameA" value="Aquila / Eagle" disabled /></td>
+									<td class="text-center"><select id="numsenatorsA" name="numsenatorsA"><option value="00">0</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></td>
+									<td class="text-center"><select id="numknightsA" name="numknightsA"><option value="00">0</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></td>
+									<td class="text-center"><input type="checkbox" id="factionleaderA" name="factionleaderA" /></td>
+								</tr>
+								<tr>
+									<td class="text-center"><input type="checkbox" id="factionactiveB" name="factionactiveB"/></td>
+									<td class="text-left"><input type="text" class="form-control" id="factionnameB" name="factionnameB" value="Corona / Wreath" disabled /></td>
+									<td class="text-center"><select id="numsenatorsB" name="numsenatorsB"><option value="00">0</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></td>
+									<td class="text-center"><select id="numknightsB" name="numknightsB"><option value="00">0</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></td>
+									<td class="text-center"><input type="checkbox" id="factionleaderB" name="factionleaderB" /></td>		
+								</tr>
+								<tr>
+									<td class="text-center"><input type="checkbox" id="factionactiveC" name="factionactiveC"/></td>
+									<td class="text-left"><input type="text" class="form-control" id="factionnameC" name="factionnameC" value="Luna / Moon" disabled /></td>
+									<td class="text-center"><select id="numsenatorsC" name="numsenatorsC"><option value="00">0</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></td>
+									<td class="text-center"><select id="numknightsC" name="numknightsC"><option value="00">0</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></td>
+									<td class="text-center"><input type="checkbox" id="factionleaderC" name="factionleaderC" /></td>			
+								</tr>				
+							</table>
+						</td>
+						
+						<td><div style="width:25px;"></div></td>
+						<td style="border-left: 1px solid #ddd;"><div style="width:25px;"></div></td>						
+						
+						<td>
+							<table width="100%">
+								<tr>
+									<th valign="bottom" class="text-center">Active</th>
+									<th valign="bottom" class="text-center">Name</th>
+									<th valign="bottom" class="text-center">Senators</th>
+									<th valign="bottom" class="text-center">Knights</th>
+									<th valign="bottom" class="text-center">Leader<br/>Assigned</th>
+								</tr>				
+								<tr>
+									<td class="text-center"><input type="checkbox" id="factionactiveD" name="factionactiveD"/></td>
+									<td class="text-left"><input type="text" class="form-control" id="factionnameD" name="factionnameD" value="Manus / Hand" disabled /></td>
+									<td class="text-center"><select id="numsenatorsD" name="numsenatorsD"><option value="00">0</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></td>
+									<td class="text-center"><select id="numknightsD" name="numknightsD"><option value="00">0</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></td>
+									<td class="text-center"><input type="checkbox" id="factionleaderD" name="factionleaderD" /></td>
+								</tr>
+								<tr>
+									<td class="text-center"><input type="checkbox" id="factionactiveE" name="factionactiveE"/></td>
+									<td class="text-left"><input type="text" class="form-control" id="factionnameE" name="factionnameE" value="Parma / Shield" disabled /></td>
+									<td class="text-center"><select id="numsenatorsE" name="numsenatorsE"><option value="00">0</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></td>
+									<td class="text-center"><select id="numknightsE" name="numknightsE"><option value="00">0</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></td>
+									<td class="text-center"><input type="checkbox" id="factionleaderE" name="factionleaderE" /></td>	
+								</tr>
+								<tr>
+									<td class="text-center"><input type="checkbox" id="factionactiveF" name="factionactiveF"/></td>
+									<td class="text-left"><input type="text" class="form-control" id="factionnameF" name="factionnameF" value="Solis / Sun" disabled /></td>
+									<td class="text-center"><select id="numsenatorsF" name="numsenatorsF"><option value="00">0</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></td>
+									<td class="text-center"><select id="numknightsF" name="numknightsF"><option value="00">0</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select></td>
+									<td class="text-center"><input type="checkbox" id="factionleaderF" name="factionleaderF" /></td>	
+								</tr>				
+							</table>
+						</td>
 					</tr>				
-					<tr>
-						<td class="text-center"><input type="checkbox" id="factionactiveA" name="factionactiveA"/></td>
-						<td class="text-center"><input type="text" class="form-control" id="factionnameA" name="factionnameA" value="Aquila / Eagle" disabled /></td>
-						<td class="text-center"><input type="text" class="form-control" id="numsenatorsA" name="numsenatorsA"></td>
-						<td class="text-center"><input type="text" class="form-control" id="numknightsA"  name="numknightsA"></td>
-						<td class="text-center"><input type="checkbox" id="factionleaderA" name="factionleaderA" /></td>		
-					</tr>
-					<tr>
-						<td class="text-center"><input type="checkbox" id="factionactiveB" name="factionactiveB"/></td>
-						<td class="text-center"><input type="text" class="form-control" id="factionnameB" name="factionnameB" value="Corona / Wreath" disabled /></td>
-						<td class="text-center"><input type="text" class="form-control" id="numsenatorsB" name="numsenatorsB"></td>
-						<td class="text-center"><input type="text" class="form-control" id="numknightsB"  name="numknightsB"></td>
-						<td class="text-center"><input type="checkbox" id="factionleaderB" name="factionleaderB" /></td>		
-					</tr>
-					<tr>
-						<td class="text-center"><input type="checkbox" id="factionactiveC" name="factionactiveC"/></td>
-						<td class="text-center"><input type="text" class="form-control" id="factionnameC" name="factionnameC" value="Luna / Moon" disabled /></td>
-						<td class="text-center"><input type="text" class="form-control" id="numsenatorsC" name="numsenatorsC"></td>
-						<td class="text-center"><input type="text" class="form-control" id="numknightsC"  name="numknightsC"></td>
-						<td class="text-center"><input type="checkbox" id="factionleaderC" name="factionleaderC" /></td>		
-					</tr>
-					<tr>
-						<td class="text-center"><input type="checkbox" id="factionactiveD" name="factionactiveD"/></td>
-						<td class="text-center"><input type="text" class="form-control" id="factionnameD" name="factionnameD" value="Manus / Hand" disabled /></td>
-						<td class="text-center"><input type="text" class="form-control" id="numsenatorsD" name="numsenatorsD"></td>
-						<td class="text-center"><input type="text" class="form-control" id="numknightsD"  name="numknightsD"></td>
-						<td class="text-center"><input type="checkbox" id="factionleaderD" name="factionleaderD" /></td>		
-					</tr>
-					<tr>
-						<td class="text-center"><input type="checkbox" id="factionactiveE" name="factionactiveE"/></td>
-						<td class="text-center"><input type="text" class="form-control" id="factionnameE" name="factionnameE" value="Parma / Shield" disabled /></td>
-						<td class="text-center"><input type="text" class="form-control" id="numsenatorsE" name="numsenatorsE"></td>
-						<td class="text-center"><input type="text" class="form-control" id="numknightsE"  name="numknightsE"></td>
-						<td class="text-center"><input type="checkbox" id="factionleaderE" name="factionleaderE" /></td>		
-					</tr>
-					<tr>
-						<td class="text-center"><input type="checkbox" id="factionactiveF" name="factionactiveF"/></td>
-						<td class="text-center"><input type="text" class="form-control" id="factionnameF" name="factionnameF" value="Solis / Sun" disabled /></td>
-						<td class="text-center"><input type="text" class="form-control" id="numsenatorsF" name="numsenatorsF"></td>
-						<td class="text-center"><input type="text" class="form-control" id="numknightsF"  name="numknightsF"></td>
-						<td class="text-center"><input type="checkbox" id="factionleaderF" name="factionleaderF" /></td>		
-					</tr>					
 				</table>
+				
 			</div>
 		</div>	
 
@@ -508,7 +531,7 @@
 
 
 <!-- Custom scripts -->
-<script type="text/javascript" src="js/revgen_scripts.js"></script>
+<script type="text/javascript" src="js/revgen_ultimate_scripts.js"></script>
 
 </body>
 </html>
