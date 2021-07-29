@@ -50,10 +50,6 @@ $(document).ready(function(){
 	  
 	function GenerateRevenueLog()
 	{	
-		// ------------------
-		// Declare variables
-		// ------------------
-		
 		// State variables
 		var numLegions 		= 0;
 		var numFleets 		= 0;
@@ -61,9 +57,6 @@ $(document).ready(function(){
 		var numLandBill2	= 0;
 		var numLandBill3	= 0;
 		var numActiveWars	= 0;
-		//var droughtLevel	= 0;
-		//var pontifexMaximus = 0;
-		//var templeDonations = 0;
 		var rule201			= 0;
 		var rule202			= 0;
 		var stateRevenue	= 0;
@@ -77,59 +70,51 @@ $(document).ready(function(){
 		var factLogRemind	= "";
 		
 		// Calculate revenue for Factions
-/*
-		if ($("#factionactiveA").is(":checked")) 
-		{
-			factionA = GenerateFactionRevenue("A");
-			factLogSum += factionA[0];
-			factLogDetail += factionA[1];
-			factLogRemind += factionA[2];
-			stateRevenue += factionA[3];
-		}
-*/
 		factionA = GenerateFactionRevenue("A");factLogSum += factionA[0];factLogDetail += factionA[1];factLogRemind += factionA[2];stateRevenue += factionA[3];
-
-		alert ("After GenerateFactionRevenue for Faction A" + "\n" +
+		factionB = GenerateFactionRevenue("B");factLogSum += factionB[0];factLogDetail += factionB[1];factLogRemind += factionB[2];stateRevenue += factionB[3];
+		factionC = GenerateFactionRevenue("C");factLogSum += factionC[0];factLogDetail += factionC[1];factLogRemind += factionC[2];stateRevenue += factionC[3];
+		factionD = GenerateFactionRevenue("D");factLogSum += factionD[0];factLogDetail += factionD[1];factLogRemind += factionD[2];stateRevenue += factionD[3];
+		factionE = GenerateFactionRevenue("E");factLogSum += factionE[0];factLogDetail += factionE[1];factLogRemind += factionE[2];stateRevenue += factionE[3];
+		factionF = GenerateFactionRevenue("F");factLogSum += factionF[0];factLogDetail += factionF[1];factLogRemind += factionF[2];stateRevenue += factionF[3];
+		
+		// Calculuate revenue for State
+		provRev = GetProvinceStateRevenue("provaeg", "Aegyptus",            0,  1,  0, 1,  1,  3);stateRevenue += provRev[0];stateLogDetail += provRev[1];																				
+		provRev = GetProvinceStateRevenue("provafr", "Africa",              2,  1, -4, 1,  1,  1);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provasi", "Asia",                2,  1, -3, 2,  1,  3);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provbit", "Bithynia",            1,  1, -2, 1,  1,  2);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provcec", "Cilicia et Cyprus",   1, -1,  0, 1, -1,  3);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provcrc", "Creta et Cyrenaica",  1,  1, -2, 1,  1,  2);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provgci", "Gallia Cisalpina",    1,  1, -1, 2,  1, -1);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provgna", "Gallia Narbonensis",  1,  1, -3, 1,  1,  1);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provgtr", "Gallia Transalpina",  1,  1, -5, 1,  1,  1);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provhci", "Hispania Citerior",   1, -1,  1, 1,  1,  1);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provhul", "Hispania Ulterior",   1, -1, -1, 1,  1, -1);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provill", "Illyricum",           1, -1, -1, 1,  1,  0);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provmac", "Macedonia",           2,  1, -2, 2,  1,  2);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provsec", "Sardinia et Corsica", 1, -1, -1, 1, -1,  1);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provsic", "Sicilia",             2,  1, -2, 1,  1,  2);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+		provRev = GetProvinceStateRevenue("provsyr", "Syria",               1,  1,  0, 1,  1,  0);stateRevenue += provRev[0];stateLogDetail += provRev[1];
+				
+/*
+		alert ("After GetProvinceStateRevenue" + "\n" +
 				"factLogSum = " + factLogSum + "\n" +
 				"factLogDetail = " + factLogDetail + "\n" +
 				"factLogRemind = " + factLogRemind + "\n" +
-				"stateRevenue = " + stateRevenue);
-	
-		
-		/*
-		factionB = GenerateFactionRevenue("B");
-		factionC = GenerateFactionRevenue("C");
-		factionD = GenerateFactionRevenue("D");
-		factionE = GenerateFactionRevenue("E");
-		factionF = GenerateFactionRevenue("F");
-		*/
-		
-		// Calculuate revenue for State
-		result = GetProvinceStateRevenue("provaeg", "Aegyptus",            0, 0,  0, 1, 1,  7);
-		stateRevenue += result[0];stateLogDetail += result[1];		
+				"stateRevenue = " + stateRevenue + "\n" +
+				"stateLogDetail = " + stateLogDetail);
+*/
 
-		
-		// Output Faction Summaries
-		
-		
-		
-		// Output Faction Details
-		
-		
-		
-		// Output Faction Reminders
-		
-		
-		
-		// Output State Revenue
-		
-		
-		
-		// Output State Details
-		
-		
-		
-		// Output State Reminders
+		factLogSum = "&{template:default}" + "{{name=Revenue Summary}}" + "{{State=" + stateRevenue + "}}" + factLogSum + "\n";
+		factLogDetail = factLogDetail;
+		factLogRemind = factLogRemind;
+		if (stateLogDetail != ""){stateLogDetail = "&{template:default}" + "{{name=State Details}}" + stateLogDetail + "\n";}
+
+		var d = new Date();
+		return("&{template:default}" + "{{name=" + d.toString() + "}}\n" + 
+				factLogSum + 
+				factLogDetail +
+				factLogRemind + 
+				stateLogDetail);
 
 	}
 
@@ -143,14 +128,14 @@ $(document).ready(function(){
 		var provRemind 		= "";
 		var stateRevenue	= 0;
 
-		if ($("#factionactiveA").is(":checked")) 
+		if ($("#factionactive" + factionID).is(":checked")) 
 		{
 			
 			// Get control values
-			var factName		= $("#factionname" + factionID).val();
-			var numSenators		= parseInt($("#numsenators" + factionID).val());
-			var numKnights    	= parseInt($("#numknights" + factionID).val());
-			var factLeaderSet 	= $("#factionleader" + factionID).is(":checked");
+			var factName	  = $("#factionname" + factionID).val();
+			var numSenators	  = parseInt($("#numsenators" + factionID).val());
+			var numKnights    = parseInt($("#numknights" + factionID).val());
+			var factLeaderSet = $("#factionleader" + factionID).is(":checked");
 				
 			var revSenators = 0;
 			revSenators += numSenators;
@@ -198,11 +183,19 @@ $(document).ready(function(){
 			
 			// Temple Donations
 			var revTempleDonations = 0;
+			var revTempleLog = "";
 			if ($("#rule201").is(":checked") && $("#pontifexmaximus").val() == factionID) {
-				revTempleDonations += 69;
+				result = RollDice(1, 1, 0);
+				revTempleDonations += parseInt(result[0]);
+				resultLog = result[1];
+
+				revTempleLog += "{{Temple Donations=" + revTempleDonations + resultLog + "}}";
 			}
 			factRevenue += revTempleDonations;
 			
+			//if ($("#rule201").is(":checked") && $("#pontifexmaximus").val() == factionID) {factLogDetail += "{{Temple Donations=" + revTempleDonations + "}}"};	
+
+
 			// Generate Provincial Income
 			result = GetProvinceFactionRevenue(factionID, "provaeg", "Aegyptus",            0, 0,  0, 1, 1,  7);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];		
 			result = GetProvinceFactionRevenue(factionID, "provafr", "Africa",              1, 1, -1, 1, 1,  3);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
@@ -223,51 +216,66 @@ $(document).ready(function(){
 
 			// Build logs
 			factLogSum = "{{" + factName + "=" + factRevenue + "}}";
-			factLogRemind = provRemind;
+
+			if (factLogRemind != "")
+			{
+				factLogRemind = "&{template:default}" + 
+									"{{name=" + factName + " Reminders}}" +
+									provRemind + "\n";
+			}
+
 			factLogDetail = "&{template:default}" + 
-							"{{name=Faction of " + factName + " Details}}" +
+							"{{name=" + factName + " Details}}" +
 							"{{Senators=" + revSenators + "}}" +
 							"{{Knights=" + revKnights + "}}" +
 							"{{Concessions=" + revConcessions + "}}" + 
-							provDetail
-							;
+							revTempleLog +
+							provDetail + "\n";
 							
-			if ($("#rule201").is(":checked") && $("#pontifexmaximus").val() == factionID) {factLogDetail += "{{Temple Donations=" + revTempleDonations + "}}"};		
+				
 		}
 
 		return [factLogSum, factLogDetail, factLogRemind, stateRevenue];
 	}
 	
 
-	function GenerateProvinceStateRevenue(provID, provName,
+	function GetProvinceStateRevenue(provID, provName,
 											stateUnimpSpoilsDice, stateUnimpSpoilsMult, stateUnimpSpoilsAdd,
 											stateImpSpoilsDice, stateImpSpoilsMult, stateImpSpoilsAdd)
 	{
-		var stateRevenue 	= 0;
-		var stateDetail 	= "";
-		var resultLog 		= "";
-				
-		// Generate State spoils
-		if ($("#" + provID + "_improved").is(":checked"))						
+		var stateRevenue = 0;
+		var stateDetail  = "";
+		var resultLog 	 = "";
+
+//alert("Generate State revenue for " + provName + ", Faction Selected = '" + $("#" + provID).val() + "'");
+
+// If a governor is assigned to the province
+		if ($("#" + provID).val() != "")
 		{
-			// Province is already improved
-			result = RollDice(stateImpSpoilsDice, stateImpSpoilsMult, stateImpSpoilsAdd);
-			stateRevenue += parseInt(result[0]);
-			resultLog = result[1];
+			// Generate State spoils
+			if ($("#" + provID + "_improved").is(":checked"))						
+			{
+//alert(provName + "is improved");
+				// Province is already improved
+				result = RollDice(stateImpSpoilsDice, stateImpSpoilsMult, stateImpSpoilsAdd);
+				stateRevenue += parseInt(result[0]);
+				resultLog = result[1];
 
-			//logFaction += "{{" + provName + " local taxes=" + province[17] + "}}";
+				//logFaction += "{{" + provName + " local taxes=" + province[17] + "}}";
+			}
+			else										
+			{
+//alert(provName + "is not improved");
+				// Province is not improved
+				result = RollDice(stateUnimpSpoilsDice, stateUnimpSpoilsMult, stateUnimpSpoilsAdd);
+				stateRevenue += parseInt(result[0]);
+				resultLog = result[1];
+
+				//logFaction += "{{" + provName + " local taxes=" + province[10] + "}}";
+			}
+
+			stateDetail += "{{" + provName + "=" + stateRevenue + resultLog + "}}";
 		}
-		else										
-		{
-			// Province is not improved
-			result = RollDice(stateUnimpSpoilsDice, stateUnimpSpoilsMult, stateUnimpSpoilsAdd);
-			stateRevenue += parseInt(result[0]);
-			resultLog = result[1];
-
-			//logFaction += "{{" + provName + " local taxes=" + province[10] + "}}";
-		}
-
-		stateDetail += "{{" + provName + " state revenue=" + stateRevenue + resultLog + "}}";
 	
 		return [stateRevenue, stateDetail];
 	}
@@ -316,8 +324,8 @@ $(document).ready(function(){
 					factRevenue = 0;
 				}
 
-				factLogDetail += "{{" + provName + " spoils=" + factRevenue + " " + resultLog + "}}"
-				factLogRemind += "{{Mark Governor of " + provName + " as corrupt.}}";
+				factLogDetail += "{{" + provName + "=" + factRevenue + " " + resultLog + "}}"
+				factLogRemind += "{{Governor of " + provName + " is corrupt}}";
 			}
 			
 			// If province is not improved, then roll for improvement
@@ -340,8 +348,8 @@ $(document).ready(function(){
 				{
 					// Province was improved
 					factLogRemind += "{{" + provName + " was improved!}}";
-					factLogRemind += "{{Governor of " + provName + " gains +3 influence.}}";
-					factLogRemind += "{{Mark " + provName + " as improved.}}";
+					factLogRemind += "{{Governor of " + provName + " gains +3 influence}}";
+					factLogRemind += "{{Mark " + provName + " as improved}}";
 					
 					// Update improve value for the province so that the State income is adjusted
 					$("#" + provID + "_improved").attr('checked', 'checked');
@@ -809,8 +817,7 @@ $(document).ready(function(){
 		log += diceNum + "d6";
 		if (diceAdd > 0) {log += "+";}			// Add positive sign for a positive adder
 		if (diceAdd != 0) {log += diceAdd;}		// Adder is zero, so don't include + or -
-		//log += " &#8594; ";					// Add arrow
-		log += "=";
+		log += " &#8594; ";					// Add arrow
 		if (diceMult < 0) {log += "-";}			// Add leading negavie sign for a negative multiplier
 		log += diceLog;
 		if (diceAdd > 0) {log += "+";}			// Add positive sign for a positive adder
