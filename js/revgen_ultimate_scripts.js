@@ -350,16 +350,19 @@ $(document).ready(function(){
 				}
 			}
 
-			// Reminder for local taxes
-			if ($("#" + provID + "_improved").is(":checked"))
+			// If Provincial Wars rule is being used, then include reminder for local taxes
+			if ($("#rule202").is(":checked"))
 			{
-				// Province is improved
-				factLogRemind += "{{Spend Local Taxes (" + provImpTaxes + ") for " + provName + "}}";
-			}
-			else
-			{
-				// Province is not improved
-				factLogRemind += "{{Spend Local Taxes (" + provUnimpTaxes + ") for " + provName + "}}";
+				if ($("#" + provID + "_improved").is(":checked"))
+				{
+					// Province is improved
+					factLogRemind += "{{Spend Local Taxes (" + provImpTaxes + ") for " + provName + "}}";
+				}
+				else
+				{
+					// Province is not improved
+					factLogRemind += "{{Spend Local Taxes (" + provUnimpTaxes + ") for " + provName + "}}";
+				}
 			}
 		}
 		
