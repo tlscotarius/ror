@@ -2,17 +2,66 @@ var showDetails = 0;
 
 $(document).ready(function(){
 
-	// Submit the form via the genrev button
+	// Submit the form 
 	$("#revgenform").submit(function(){
-		var log = "";
-		
 		// Generate the revenue log
-		log = GenerateRevenueLog(showDetails);
+		var logRevenue = GenerateRevenueLog(showDetails);
 
-		// Display message
-		$("#output").val(log);
+/*
+var logRevenue = '';	
+logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
+logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
+logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
+logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
+logRevenue += '</tbody></table>';
+logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
+logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
+logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
+logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
+logRevenue += '</tbody></table>';
+logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
+logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
+logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
+logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
+logRevenue += '</tbody></table>';
+logRevenue += '<table class=""table table-striped pb-5""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
+logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
+logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
+logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
+logRevenue += '</tbody></table>';
+logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
+logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
+logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
+logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
+logRevenue += '</tbody></table>';
+logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
+logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
+logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
+logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
+logRevenue += '</tbody></table>';
+logRevenue += '<table class=""table table-striped pb-5""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
+logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
+logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
+logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
+logRevenue += '</tbody></table>';
+logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
+logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
+logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
+logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
+logRevenue += '</tbody></table>';
+logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
+logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
+logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
+logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
+logRevenue += '</tbody></table>';
+*/
 
-		alert ("Copy the contents of the Revenue Output box and paste it into the Roll20 chat.");
+		// Load the revenue log into the modal
+		//$('.modal-body').text(logRevenue);
+		$('.modal-body').html(logRevenue);
+
+		// Display the modal
+		$('#myModal').modal({show:true});
 		
 		return false;// Return false so that the the form is not cleared out
 	});
@@ -40,28 +89,29 @@ $(document).ready(function(){
 				document.getElementById("pontifexmaximus").style.display = "block";
 			}
 			else if($(this).prop('checked') == false){
-				//alert("False");
-				//$($(this).data('pontifexmaximuslabel')).show();
 				document.getElementById("pontifexmaximuslabel").style.display = "none";
 				document.getElementById("pontifexmaximus").style.display = "none";
 			}
 		});
 	});
 
+	// Handle copying modal text to clipboard for Roll20
+	$('#copytoclipboard').on("click", function(){
+		value = $('.modal-body').text();
+ 
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val(value).select();
+        document.execCommand("copy");
+        $temp.remove();
+
+		//return false;
+    })
   
+	// Main routine to generate revenue
 	function GenerateRevenueLog(showDetails)
 	{	
-		// State variables
-		//var numLegions 		= 0;
-		//var numFleets 		= 0;
-		//var numLandBill1	= 0;
-		//var numLandBill2	= 0;
-		//var numLandBill3	= 0;
-		//var numActiveWars	= 0;
-		//var rule201			= 0;
-		//var rule202			= 0;
 		var stateRevenue	= 100;
-		//var stateLogSum		= "";
 		var stateLogDetail	= "";
 		var stateLogRemind  = "";
 		var factLogSum		= "";
@@ -114,6 +164,7 @@ $(document).ready(function(){
 		provRev = GetProvinceStateRevenue("provsyr", "Syria",               1,  1,  0, 1,  1,  0);stateRevenue += provRev[0];stateLogDetail += provRev[1];
 				
 		factLogSum = "&{template:default}" + "{{name=Revenue Summary}}" + "{{State=" + stateRevenue + "}}" + factLogSum + "\n";
+		//if (factLogRemind != ""){factLogRemind = "&{template:default}" + "{{name=Faction  Reminders}}" + factionLogRemind + "\n";}
 		if (stateLogDetail != ""){stateLogDetail = "&{template:default}" + "{{name=State Details}}" + stateLogDetail + "\n";}
 		if (stateLogRemind != ""){stateLogRemind = "&{template:default}" + "{{name=State Reminders}}" + stateLogRemind + "\n";}
 
@@ -131,6 +182,7 @@ $(document).ready(function(){
 
 	}
 
+	// Generate the revenue for the given faction
 	function GenerateFactionRevenue(factionID)
 	{
 		var factRevenue		= 0;
@@ -174,9 +226,10 @@ $(document).ready(function(){
 			// Aegyptian Grain
 			if ($("#concaeg").val() == factionID) 
 			{
-				if ($("#droughtaeg").is(":checked")) // If Faction is taking drought graft
+				if (droughtLevel > 0 && $("#droughtaeg").is(":checked")) // If Faction is taking drought graft
 				{
 					droughtMult = droughtLevel + 1;// Set drought multiplier equal to drought level + 1 
+					factLogRemind += "{{Holder of Aegyptian Grain loses " + droughtLevel + " Popularity!}}";
 				}
 				revConcessions += 5 * droughtMult;
 			}
@@ -184,13 +237,14 @@ $(document).ready(function(){
 			// Sicilian Grain
 			if ($("#concscg").val() == factionID) 
 			{
-				if ($("#droughtscg").is(":checked")) // If Faction is taking drought graft
+				if (droughtLevel > 0 && $("#droughtscg").is(":checked")) // If Faction is taking drought graft
 				{
 					droughtMult = droughtLevel + 1;// Set drought multiplier equal to drought level + 1 
+					factLogRemind += "{{Holder of Sicilian Grain loses " + droughtLevel + " Popularity!}}";
 				}
 				revConcessions += 4 * droughtMult;
 			}
-			
+		
 			factRevenue += revConcessions;
 			
 			// Temple Donations
@@ -206,48 +260,49 @@ $(document).ready(function(){
 			factRevenue += revTempleDonations;
 
 			// Generate Provincial Income
-			result = GetProvinceFactionRevenue(factionID, "provaeg", "Aegyptus",            0, 0,  0, 1, 1,  7,  0, 60);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];		
-			result = GetProvinceFactionRevenue(factionID, "provafr", "Africa",              1, 1, -1, 1, 1,  3, 20, 30);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provasi", "Asia",                1, 1,  2, 1, 1,  6, 35, 50);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provbit", "Bithynia",            1, 1, -4, 1, 1,  2, 10, 30);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provcec", "Cilicia et Cyprus",   1, 1, -4, 1, 1,  0, 10, 20);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provcrc", "Creta et Cyrenaica",  1, 1, -1, 1, 1,  1, 15, 20);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provgci", "Gallia Cisalpina",    1, 1, -1, 1, 1,  3, 15, 20);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provgna", "Gallia Narbonensis",  1, 1, -3, 1, 1,  1, 10, 20);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provgtr", "Gallia Transalpina",  1, 1, -4, 1, 1,  0, 10, 20);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provhci", "Hispania Citerior",   1, 1, -2, 1, 1,  2, 10, 15);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provhul", "Hispania Ulterior",   1, 1, -3, 1, 1,  1, 10, 20);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provill", "Illyricum",           1, 1, -3, 1, 1,  0,  5, 15);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provmac", "Macedonia",           1, 1,  1, 2, 1, -1, 30, 40);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provsec", "Sardinia et Corsica", 1, 1, -5, 1, 1, -1,  5, 10);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provsic", "Sicilia",             1, 1,  0, 1, 1,  4, 30, 40);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
-			result = GetProvinceFactionRevenue(factionID, "provsyr", "Syria",               1, 1, -1, 1, 1,  3, 20, 30);factRevenue += result[0];provDetail += result[1];provRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provaeg", "Aegyptus",            0, 0,  0, 1, 1,  7,  0, 60);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];		
+			result = GetProvinceFactionRevenue(factionID, "provafr", "Africa",              1, 1, -1, 1, 1,  3, 20, 30);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provasi", "Asia",                1, 1,  2, 1, 1,  6, 35, 50);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provbit", "Bithynia",            1, 1, -4, 1, 1,  2, 10, 30);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provcec", "Cilicia et Cyprus",   1, 1, -4, 1, 1,  0, 10, 20);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provcrc", "Creta et Cyrenaica",  1, 1, -1, 1, 1,  1, 15, 20);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provgci", "Gallia Cisalpina",    1, 1, -1, 1, 1,  3, 15, 20);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provgna", "Gallia Narbonensis",  1, 1, -3, 1, 1,  1, 10, 20);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provgtr", "Gallia Transalpina",  1, 1, -4, 1, 1,  0, 10, 20);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provhci", "Hispania Citerior",   1, 1, -2, 1, 1,  2, 10, 15);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provhul", "Hispania Ulterior",   1, 1, -3, 1, 1,  1, 10, 20);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provill", "Illyricum",           1, 1, -3, 1, 1,  0,  5, 15);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provmac", "Macedonia",           1, 1,  1, 2, 1, -1, 30, 40);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provsec", "Sardinia et Corsica", 1, 1, -5, 1, 1, -1,  5, 10);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provsic", "Sicilia",             1, 1,  0, 1, 1,  4, 30, 40);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
+			result = GetProvinceFactionRevenue(factionID, "provsyr", "Syria",               1, 1, -1, 1, 1,  3, 20, 30);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
 
-			// Build logs
+			// Build summary logs
 			factLogSum = "{{" + factName + "=" + factRevenue + "}}";
 
-			if (provRemind != "")
-			{
-				factLogRemind = "&{template:default}" + 
-									"{{name=" + factName + " Reminders}}" +
-									provRemind + "\n";
-			}
-
+			// Build faction detail log
 			factLogDetail = "&{template:default}" + 
 							"{{name=" + factName + " Details}}" +
 							"{{Senators=" + revSenators + "}}" +
 							"{{Knights=" + revKnights + "}}" +
 							"{{Concessions=" + revConcessions + "}}" + 
-							revTempleLog +
+							revTempleLog + 
 							provDetail + "\n";
-							
+
+			// Build faction reminder log
+			if (factLogRemind != "")
+			{
+				factLogRemind = "&{template:default}" + 
+									"{{name=" + factName + " Reminders}}" + 
+									factLogRemind + "\n";
+			}
 				
 		}
 
 		return [factLogSum, factLogDetail, factLogRemind, stateRevenue];
 	}
 	
-
+	// Generate the state revenue for the given province
 	function GetProvinceStateRevenue(provID, provName,
 											stateUnimpSpoilsDice, stateUnimpSpoilsMult, stateUnimpSpoilsAdd,
 											stateImpSpoilsDice, stateImpSpoilsMult, stateImpSpoilsAdd)
@@ -281,6 +336,8 @@ $(document).ready(function(){
 		return [stateRevenue, stateDetail];
 	}
 	
+	// Generate the state revenue for the given faction
+	// Also handles improving the province
 	function GetProvinceFactionRevenue(factionID, provID, provName,
 											provUnimpSpoilsDice, provUnimpSpoilsMult, provUnimpSpoilsAdd,
 											provImpSpoilsDice, provImpSpoilsMult, provImpSpoilsAdd,
@@ -369,7 +426,8 @@ $(document).ready(function(){
 		return [factRevenue, factLogDetail, factLogRemind, stateRevenue];
 	}
 	
-
+	// Roll dice  (diceNum * 6) * diceMult + diceAdd
+	// Examples: 1d6+1, -1d6-1, 2d6-3
 	function RollDice(diceNum, diceMult, diceAdd)
 	{
 		var returnValue = 0;
@@ -399,7 +457,8 @@ $(document).ready(function(){
 		log += diceNum + "d6";
 		if (diceAdd > 0) {log += "+";}			// Add positive sign for a positive adder
 		if (diceAdd != 0) {log += diceAdd;}		// Adder is zero, so don't include + or -
-		log += " &#8594; ";						// Add arrow
+		//log += " &#8594; ";						// Add thin arrow
+		log += " &#x279C; "						// Add thick arrow
 		if (diceMult < 0) {log += "-";}			// Add leading negavie sign for a negative multiplier
 		log += diceLog;
 		if (diceAdd > 0) {log += "+";}			// Add positive sign for a positive adder
@@ -412,21 +471,5 @@ $(document).ready(function(){
 		return [returnValue, log];
 	}
 
-
-	function CopyToClipboard() 
-	{
-	  /* Get the text field */
-	  var copyText = document.getElementById("myInput");
-
-	  /* Select the text field */
-	  copyText.select();
-	  copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-	  /* Copy the text inside the text field */
-	  document.execCommand("copy");
-
-	  /* Alert the copied text */
-	  alert("Copied the text: " + copyText.value);
-	}
 
 });
