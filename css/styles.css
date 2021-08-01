@@ -1,7 +1,7 @@
 a, a:hover, a:link, a:visited, a:active {color:#bd0000;}
 
 .bg-custom {background-color:#FEF9E7;}
-.bg-red {background-color:#C0392B}
+.bg-red {background-color:#dc3545;}/* #C0392B */
 .bg-yellow {background-color:#FEF9E7;}
 .signature {font-style: italic;}
 .indexglossary {padding-left: 2.5em;text-indent:-1.5em;}
@@ -10,7 +10,7 @@ a, a:hover, a:link, a:visited, a:active {color:#bd0000;}
 .text-example{color:slategray; font-style: italic;}
 .text-green{color:limegreen;}
 .text-yellow{color:#FEF9E7;}
-.display-6{font-size:22px;}
+.display-6{font-size:18px;color:#FEF9E7;padding: .5rem 1.0rem;}
 
 
 #btn-back-to-top {
@@ -33,3 +33,6 @@ a, a:hover, a:link, a:visited, a:active {color:#bd0000;}
   background-color: #555; /* Add a dark-grey background on hover */
 }
 
+/* Add a vertical scroll for the body of the modal used in RevGen  */
+.modal-dialog{overflow-y: initial !important;}
+.modal-body{height: 60vh;  overflow-y: auto;}
