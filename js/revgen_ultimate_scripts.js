@@ -174,9 +174,9 @@ $(document).ready(function(){
 		provRev = GetProvinceStateRevenue("provsic", "Sicilia",             2,  1, -2, 1,  1,  2);stateRevenue += provRev[0];stateLogDetail += provRev[1];
 		provRev = GetProvinceStateRevenue("provsyr", "Syria",               1,  1,  0, 1,  1,  0);stateRevenue += provRev[0];stateLogDetail += provRev[1];
 				
-		factLogSum = ":TableStart:" + ":HeaderStart:Revenue Summary:RowEnd:" + ":RowStart:State:RowDelimiter:" + stateRevenue + ":RowEnd:" + factLogSum + ":TableEnd:" + "\n";
-		if (stateLogDetail != ""){stateLogDetail = ":TableStart:" + ":HeaderStart:State Details:RowEnd:" + stateLogDetail + ":TableEnd:" + "\n";}
-		if (stateLogRemind != ""){stateLogRemind = ":TableStart:" + ":HeaderStart:State Reminders:RowEnd:" + stateLogRemind + ":TableEnd:" + "\n";}
+		factLogSum = ":TableStart:" + ":HeaderStart:Revenue Summary:RowEnd:" + ":RowStart:State:RowDelimiter:" + stateRevenue + ":RowEnd:" + factLogSum + ":TableEnd:";
+		if (stateLogDetail != ""){stateLogDetail = ":TableStart:" + ":HeaderStart:State Details:RowEnd:" + stateLogDetail + ":TableEnd:";}
+		if (stateLogRemind != ""){stateLogRemind = ":TableStart:" + ":HeaderStart:State Reminders:RowEnd:" + stateLogRemind + ":TableEnd:";}
 
 		// Build final output
 		var d = new Date();
