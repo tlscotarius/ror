@@ -65,7 +65,7 @@ $(document).ready(function(){
 		value = $('.modal-body-roll20').text();
  
 /*
-        var $temp = $("<input>");
+        var $temp = $("<input>");    // This was causing line feeds to be dropped when copying to the clipboard
         $("body").append($temp);
         $temp.val(value).select();
         document.execCommand("copy");
