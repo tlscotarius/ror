@@ -2,63 +2,20 @@ var showDetails = 0;
 
 $(document).ready(function(){
 
-	// Submit the form 
+	// ----------------
+	// Submit the form
+	// ----------------
 	$("#revgenform").submit(function(){
 		// Generate the revenue log
 		var logRevenue = GenerateRevenueLog(showDetails);
 
-/*
-var logRevenue = '';	
-logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
-logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
-logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
-logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
-logRevenue += '</tbody></table>';
-logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
-logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
-logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
-logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
-logRevenue += '</tbody></table>';
-logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
-logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
-logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
-logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
-logRevenue += '</tbody></table>';
-logRevenue += '<table class=""table table-striped pb-5""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
-logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
-logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
-logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
-logRevenue += '</tbody></table>';
-logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
-logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
-logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
-logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
-logRevenue += '</tbody></table>';
-logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
-logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
-logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
-logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
-logRevenue += '</tbody></table>';
-logRevenue += '<table class=""table table-striped pb-5""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
-logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
-logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
-logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
-logRevenue += '</tbody></table>';
-logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
-logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
-logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
-logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
-logRevenue += '</tbody></table>';
-logRevenue += '<table class=""table table-striped""><thead><tr><th colspan=""2"">Revenue Summary</th></tr></thead>';
-logRevenue += '<tbody><tr><td>State</td><td>38</td></tr>';
-logRevenue += '<tr><td>Aquila / Eagle</td><td>4</td>';
-logRevenue += '</tr><tr><td>Corona / Wreath</td><td>12</td></tr>';
-logRevenue += '</tbody></table>';
-*/
+//logRevenue = FormatOutput(logRevenue, "roll20");
+//logRevenue = FormatOutput(logRevenue, "html");
 
 		// Load the revenue log into the modal
-		//$('.modal-body').text(logRevenue);
-		$('.modal-body').html(logRevenue);
+		$('.modal-body').html(FormatOutput(logRevenue, "html"));
+		$('.modal-body-roll20').text(FormatOutput(logRevenue, "roll20"));
+		//$('.modal-body-roll20').html(logRevenue, "roll20");
 
 		// Display the modal
 		$('#myModal').modal({show:true});
@@ -66,22 +23,27 @@ logRevenue += '</tbody></table>';
 		return false;// Return false so that the the form is not cleared out
 	});
 
-	// Submit the form via the genrev button
+	// ---------------------------------------
+	// Submit the form via the genrev button.
+	// ---------------------------------------
 	$("#genrev").click(function(){
 		showDetails = 0;
-	  $("#revgenform").validate();
-	  $("#revgenform").submit();
+		$("#revgenform").validate();
+		$("#revgenform").submit();
 	});	
 	
-	// Submit the form via the genrevdetails button
+	// ----------------------------------------------
+	// Submit the form via the genrevdetails button.
+	// ----------------------------------------------
 	$("#genrevdetails").click(function(){
 		showDetails = 1;
-	  $("#revgenform").validate();
-	  $("#revgenform").submit();
+		$("#revgenform").validate();
+		$("#revgenform").submit();
 	});	
-	
 
-	// Hide or show Pontifex Maximus label and control
+	// -------------------------------------------------
+	// Hide or show Pontifex Maximus label and control.
+	// -------------------------------------------------
 	$(document).ready(function(){
 		$('input[type="checkbox"]').click(function(){
 			if($("#rule201").prop('checked') == true){
@@ -95,20 +57,69 @@ logRevenue += '</tbody></table>';
 		});
 	});
 
-	// Handle copying modal text to clipboard for Roll20
+	// ---------------------------------------------------
+	// Handle copying modal text to clipboard for Roll20.
+	// ---------------------------------------------------
 	$('#copytoclipboard').on("click", function(){
-		value = $('.modal-body').text();
+		//value = $('.modal-body').text();
+		value = $('.modal-body-roll20').text();
  
+/*
         var $temp = $("<input>");
         $("body").append($temp);
         $temp.val(value).select();
         document.execCommand("copy");
         $temp.remove();
+*/
 
-		//return false;
+        var $temp = $("<textarea>");
+        $("body").append($temp);
+        $temp.val(value).select();
+        document.execCommand("copy");
+        $temp.remove();
+
+		//return false;  // Uncomment this to cause the modal to NOT close when clicking the Copy to Clipboard button
     })
-  
-	// Main routine to generate revenue
+
+	// -----------------------------------------------
+	// Format the the input based on the value given.
+	// -----------------------------------------------
+	function FormatOutput(inputValue, outputType)
+	{
+		var outputValue = inputValue;
+
+		switch(outputType) {
+			case "roll20":
+				// Convert input to Roll20 format
+				outputValue = outputValue.replace(/:TableStart:/g, "&{template:default}");
+				outputValue = outputValue.replace(/:HeaderStart:/g, "{{name=");
+				outputValue = outputValue.replace(/:HeaderEnd:/g, "}}");
+				outputValue = outputValue.replace(/:RowStart:/g, "{{");
+				outputValue = outputValue.replace(/:RowEnd:/g, "}}");
+				outputValue = outputValue.replace(/:RowDelimiter:/g, "=");
+				outputValue = outputValue.replace(/:TableEnd:/g, "\n");// <--- **** Why isn't this working in Roll20? ****
+				break;
+			case "html":
+				// Convert input to HTML format
+				//outputValue = outputValue.replace(/:TableStart:/g, '<table class=\"table\">');
+				outputValue = outputValue.replace(/:TableStart:/g, '<table>');
+				outputValue = outputValue.replace(/:HeaderStart:/g, '<thead><tr><th colspan=\"2\">');
+				outputValue = outputValue.replace(/:HeaderEnd:/g, "</th></tr></thead>");
+				outputValue = outputValue.replace(/:RowStart:/g, "<tr><td>");
+				outputValue = outputValue.replace(/:RowEnd:/g, "</td></tr>");
+				outputValue = outputValue.replace(/:RowDelimiter:/g, "</td><td>");
+				outputValue = outputValue.replace(/:TableEnd:/g, "</table>");
+				break;
+			default:
+				// Undefined
+		  }
+
+		return (outputValue);
+	}
+
+	// ----------------------------------
+	// Main routine to generate revenue.
+	// ----------------------------------
 	function GenerateRevenueLog(showDetails)
 	{	
 		var stateRevenue	= 100;
@@ -123,18 +134,18 @@ logRevenue += '</tbody></table>';
 		var stateFleetCost = parseInt($("#numfleets").val()) * 2;
 		var stateLBCost = (parseInt($("#lbtype1").val()) * 20) + (parseInt($("#lbtype2").val()) * 5) + (parseInt($("#lbtype3").val()) * 10);
 		var stateActWarCost = parseInt($("#numactwars").val()) * 20;
-		stateLogDetail += "{{Annual Revenue=100}}";
-		if (stateLegionCost != 0) {stateLogDetail += "{{Legions=-" + stateLegionCost + "}}";}
-		if (stateFleetCost != 0) {stateLogDetail += "{{Fleets=-" + stateFleetCost + "}}";}
-		if (stateLBCost != 0) {stateLogDetail += "{{Land Bills=-" + stateLBCost + "}}";}
-		if (stateActWarCost != 0) {stateLogDetail += "{{Active Wars=-" + stateActWarCost + "}}";}
+		stateLogDetail += ":RowStart:Annual Revenue:RowDelimiter:100:RowEnd:";
+		if (stateLegionCost != 0) {stateLogDetail += ":RowStart:Legions:RowDelimiter:-" + stateLegionCost + ":RowEnd:";}
+		if (stateFleetCost != 0) {stateLogDetail += ":RowStart:Fleets:RowDelimiter:-" + stateFleetCost + ":RowEnd:";}
+		if (stateLBCost != 0) {stateLogDetail += ":RowStart:Land Bills:RowDelimiter:-" + stateLBCost + ":RowEnd:";}
+		if (stateActWarCost != 0) {stateLogDetail += ":RowStart:Active Wars:RowDelimiter:-" + stateActWarCost + ":RowEnd:";}
 		stateRevenue = stateRevenue - stateLegionCost - stateFleetCost - stateLBCost - stateActWarCost;
 
 		// Set Land Bill 1 back to zero
 		if (parseInt($("#lbtype1").val()) > 0) 
 		{
 			$("#lbtype1").val('00').change();
-			stateLogRemind += "{{Remove Type 1 Land Bill marker}}";
+			stateLogRemind += ":RowStart:Remove Type 1 Land Bill marker:RowEnd:";
 		}
 
 		// Calculate revenue for Factions
@@ -163,26 +174,27 @@ logRevenue += '</tbody></table>';
 		provRev = GetProvinceStateRevenue("provsic", "Sicilia",             2,  1, -2, 1,  1,  2);stateRevenue += provRev[0];stateLogDetail += provRev[1];
 		provRev = GetProvinceStateRevenue("provsyr", "Syria",               1,  1,  0, 1,  1,  0);stateRevenue += provRev[0];stateLogDetail += provRev[1];
 				
-		factLogSum = "&{template:default}" + "{{name=Revenue Summary}}" + "{{State=" + stateRevenue + "}}" + factLogSum + "\n";
-		//if (factLogRemind != ""){factLogRemind = "&{template:default}" + "{{name=Faction  Reminders}}" + factionLogRemind + "\n";}
-		if (stateLogDetail != ""){stateLogDetail = "&{template:default}" + "{{name=State Details}}" + stateLogDetail + "\n";}
-		if (stateLogRemind != ""){stateLogRemind = "&{template:default}" + "{{name=State Reminders}}" + stateLogRemind + "\n";}
+		factLogSum = ":TableStart:" + ":HeaderStart:Revenue Summary:RowEnd:" + ":RowStart:State:RowDelimiter:" + stateRevenue + ":RowEnd:" + factLogSum + ":TableEnd:" + "\n";
+		if (stateLogDetail != ""){stateLogDetail = ":TableStart:" + ":HeaderStart:State Details:RowEnd:" + stateLogDetail + ":TableEnd:" + "\n";}
+		if (stateLogRemind != ""){stateLogRemind = ":TableStart:" + ":HeaderStart:State Reminders:RowEnd:" + stateLogRemind + ":TableEnd:" + "\n";}
 
 		// Build final output
 		var d = new Date();
 		var outputLog = "";
-		outputLog += "&{template:default}" + "{{name=" + d.toString() + "}}\n";
+		outputLog += ":TableStart:" + ":HeaderStart:" + d.toString() + ":HeaderEnd::TableEnd:";
 		outputLog += factLogSum;
-		if (showDetails) {outputLog += factLogDetail;}
+		if (showDetails) {outputLog += factLogDetail;}  // If Faction details to be shown
 		outputLog += factLogRemind;
-		if (showDetails) {outputLog += stateLogDetail;}
+		if (showDetails) {outputLog += stateLogDetail;}	// If State details to be shown
 		outputLog += stateLogRemind;
 
 		return(outputLog);
 
 	}
 
-	// Generate the revenue for the given faction
+	// --------------------------------------------
+	// Generate the revenue for the given faction.
+	// --------------------------------------------
 	function GenerateFactionRevenue(factionID)
 	{
 		var factRevenue		= 0;
@@ -216,9 +228,9 @@ logRevenue += '</tbody></table>';
 			if ($("#conctf4").val() == factionID) {revConcessions += 2;}	// Tax Farmer #4
 			if ($("#conctf5").val() == factionID) {revConcessions += 2;}	// Tax Farmer #5
 			if ($("#conctf6").val() == factionID) {revConcessions += 2;}	// Tax Farmer #6
-			if ($("#conchf").val() == factionID) {revConcessions += 3;}	// Harbor Fees
+			if ($("#conchf").val() == factionID) {revConcessions += 3;}		// Harbor Fees
 			if ($("#concmin").val() == factionID) {revConcessions += 3;}	// Mining
-			if ($("#conclc").val() == factionID) {revConcessions += 3;}	// Land Commissioner
+			if ($("#conclc").val() == factionID) {revConcessions += 3;}		// Land Commissioner
 			
 			var droughtLevel = parseInt($("#droughtlevel").val());// Get drought level
 			var droughtMult = 1;// Drought multiplier
@@ -229,7 +241,7 @@ logRevenue += '</tbody></table>';
 				if (droughtLevel > 0 && $("#droughtaeg").is(":checked")) // If Faction is taking drought graft
 				{
 					droughtMult = droughtLevel + 1;// Set drought multiplier equal to drought level + 1 
-					factLogRemind += "{{Holder of Aegyptian Grain loses " + droughtLevel + " Popularity!}}";
+					factLogRemind += ":RowStart:Holder of Aegyptian Grain loses " + droughtLevel + " Popularity!:RowEnd:";
 				}
 				revConcessions += 5 * droughtMult;
 			}
@@ -240,7 +252,7 @@ logRevenue += '</tbody></table>';
 				if (droughtLevel > 0 && $("#droughtscg").is(":checked")) // If Faction is taking drought graft
 				{
 					droughtMult = droughtLevel + 1;// Set drought multiplier equal to drought level + 1 
-					factLogRemind += "{{Holder of Sicilian Grain loses " + droughtLevel + " Popularity!}}";
+					factLogRemind += ":RowStart:Holder of Sicilian Grain loses " + droughtLevel + " Popularity!:RowEnd:";
 				}
 				revConcessions += 4 * droughtMult;
 			}
@@ -255,7 +267,7 @@ logRevenue += '</tbody></table>';
 				revTempleDonations += parseInt(result[0]);
 				resultLog = result[1];
 
-				revTempleLog += "{{Temple Donations=" + revTempleDonations + resultLog + "}}";
+				revTempleLog += ":RowStart:Temple Donations=" + revTempleDonations + resultLog + ":RowEnd:";
 			}
 			factRevenue += revTempleDonations;
 
@@ -278,23 +290,23 @@ logRevenue += '</tbody></table>';
 			result = GetProvinceFactionRevenue(factionID, "provsyr", "Syria",               1, 1, -1, 1, 1,  3, 20, 30);factRevenue += result[0];provDetail += result[1];factLogRemind += result[2];stateRevenue += result[3];
 
 			// Build summary logs
-			factLogSum = "{{" + factName + "=" + factRevenue + "}}";
+			factLogSum = ":RowStart:" + factName + ":RowDelimiter:" + factRevenue + ":RowEnd:";
 
 			// Build faction detail log
-			factLogDetail = "&{template:default}" + 
-							"{{name=" + factName + " Details}}" +
-							"{{Senators=" + revSenators + "}}" +
-							"{{Knights=" + revKnights + "}}" +
-							"{{Concessions=" + revConcessions + "}}" + 
+			factLogDetail = ":TableStart:" + 
+							":HeaderStart:" + factName + " Details:HeaderEnd:" +
+							":RowStart:Senators:RowDelimiter:" + revSenators + ":RowEnd:" +
+							":RowStart:Knights:RowDelimiter:" + revKnights + ":RowEnd:" +
+							":RowStart:Concessions:RowDelimiter:" + revConcessions + ":RowEnd:" + 
 							revTempleLog + 
-							provDetail + "\n";
+							provDetail + ":TableEnd:";
 
 			// Build faction reminder log
 			if (factLogRemind != "")
 			{
-				factLogRemind = "&{template:default}" + 
-									"{{name=" + factName + " Reminders}}" + 
-									factLogRemind + "\n";
+				factLogRemind = ":TableStart:" + 
+									":HeaderStart:" + factName + " Reminders:HeaderEnd:" + 
+									factLogRemind + ":TableEnd:";
 			}
 				
 		}
@@ -302,7 +314,9 @@ logRevenue += '</tbody></table>';
 		return [factLogSum, factLogDetail, factLogRemind, stateRevenue];
 	}
 	
-	// Generate the state revenue for the given province
+	// ---------------------------------------------------
+	// Generate the state revenue for the given province.
+	// ---------------------------------------------------
 	function GetProvinceStateRevenue(provID, provName,
 											stateUnimpSpoilsDice, stateUnimpSpoilsMult, stateUnimpSpoilsAdd,
 											stateImpSpoilsDice, stateImpSpoilsMult, stateImpSpoilsAdd)
@@ -330,14 +344,17 @@ logRevenue += '</tbody></table>';
 				resultLog = result[1];
 			}
 
-			stateDetail += "{{" + provName + "=" + stateRevenue + resultLog + "}}";
+			stateDetail += ":RowStart:" + provName + ":RowDelimiter:" + stateRevenue + resultLog + ":RowEnd:";
 		}
 	
 		return [stateRevenue, stateDetail];
 	}
 	
-	// Generate the state revenue for the given faction
-	// Also handles improving the province
+	// -------------------------------------------------------------------------------------------
+	// Generate the state revenue for the given faction.  Also handles improving the province.
+	// Does handle situations where faction spoliation results in a negative value. In this case, 
+	// negative values will be applied to the total State Revenue.
+	// -------------------------------------------------------------------------------------------
 	function GetProvinceFactionRevenue(factionID, provID, provName,
 											provUnimpSpoilsDice, provUnimpSpoilsMult, provUnimpSpoilsAdd,
 											provImpSpoilsDice, provImpSpoilsMult, provImpSpoilsAdd,
@@ -378,8 +395,8 @@ logRevenue += '</tbody></table>';
 					factRevenue = 0;
 				}
 
-				factLogDetail += "{{" + provName + "=" + factRevenue + " " + resultLog + "}}"
-				factLogRemind += "{{Governor of " + provName + " is corrupt}}";
+				factLogDetail += ":RowStart:" + provName + ":RowDelimiter:" + factRevenue + " " + resultLog + ":RowEnd:"
+				factLogRemind += ":RowStart:Governor of " + provName + " is corrupt:RowEnd:";
 			}
 			
 			// If province is not improved, then roll for improvement
@@ -398,9 +415,9 @@ logRevenue += '</tbody></table>';
 				if (improveResult >= 5)
 				{
 					// Province was improved
-					factLogRemind += "{{" + provName + " was improved!}}";
-					factLogRemind += "{{Governor of " + provName + " gains +3 influence}}";
-					factLogRemind += "{{Mark " + provName + " as improved}}";
+					factLogRemind += ":RowStart:" + provName + " was improved!:RowEnd:";
+					factLogRemind += ":RowStart:Governor of " + provName + " gains +3 influence:RowEnd:";
+					factLogRemind += ":RowStart:Mark " + provName + " as improved:RowEnd:";
 					
 					// Update improve value for the province so that the State income is adjusted
 					$("#" + provID + "_improved").attr('checked', 'checked');
@@ -413,12 +430,12 @@ logRevenue += '</tbody></table>';
 				if ($("#" + provID + "_improved").is(":checked"))
 				{
 					// Province is improved
-					factLogRemind += "{{Spend Local Taxes (" + provImpTaxes + ") for " + provName + "}}";
+					factLogRemind += ":RowStart:Spend Local Taxes (" + provImpTaxes + ") for " + provName + ":RowEnd:";
 				}
 				else
 				{
 					// Province is not improved
-					factLogRemind += "{{Spend Local Taxes (" + provUnimpTaxes + ") for " + provName + "}}";
+					factLogRemind += ":RowStart:Spend Local Taxes (" + provUnimpTaxes + ") for " + provName + ":RowEnd:";
 				}
 			}
 		}
@@ -426,8 +443,10 @@ logRevenue += '</tbody></table>';
 		return [factRevenue, factLogDetail, factLogRemind, stateRevenue];
 	}
 	
+	// ----------------------------------------------
 	// Roll dice  (diceNum * 6) * diceMult + diceAdd
 	// Examples: 1d6+1, -1d6-1, 2d6-3
+	// ----------------------------------------------
 	function RollDice(diceNum, diceMult, diceAdd)
 	{
 		var returnValue = 0;
@@ -436,7 +455,7 @@ logRevenue += '</tbody></table>';
 		var log = "";
 		var diceLog = "";
 		
-		// Roll the dice
+		// Roll dem bones
 		for (i = 0; i < diceNum; i++) {
 			diceCurrValue = Math.floor(Math.random() * 6) + 1;
 			diceLog += diceCurrValue + "+";
