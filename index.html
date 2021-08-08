@@ -4,7 +4,11 @@
     <title>The Journals of Titus Livius Scotarius</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- JQuery and other JavaScript libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -15,62 +19,63 @@
         background: #aaa;
         }
 
-        body {background-color: #FEF9E7;}
-
-        .site-red {background-color:#bd0000;}
-        .site-yellow {background-color: #FEF9E7;}
     </style>
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
 
-<body>
+<body class="bg-yellow">
 
-    <div class="jumbotron text-center site-yellow" style="margin-bottom:0;">
-    <h1>The Journals of Titus Livius Scotarius</h1>
+    <div class="jumbotron text-center bg-yellow" style="margin-bottom:0;">
+    <h1>Patres Conscripti</h1>
     <p>A website dedicated to The Republic of Rome* board game.</p> 
     </div>
 
     <!--<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">-->
 
-    <nav class="navbar navbar-expand-sm navbar-dark sticky-top bg-danger ">
+    <nav class="navbar navbar-expand-sm navbar-dark sticky-top bg-danger "> 
 		<div class="container">
-        <a class="navbar-brand" href="#">Home</a>
+            <a class="navbar-brand font-weight-bold pt-0" href="#">Home</a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-				<!--
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Link</a></li>  
-                -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <!--
+                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>  
+                    -->
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                        Games
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Link 1</a>
-                        <a class="dropdown-item" href="#">Link 2</a>
-                        <a class="dropdown-item" href="#">Link 3</a>
-                    </div>
-                </li>
-				
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                        Resources
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="livingrules_v106a.html">Living Rules v1.06A</a>
-                        <a class="dropdown-item" href="revgen.html">Revenue Generator</a>
-                    </div>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbardrop" data-toggle="dropdown">
+                            Games
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Link 1</a>
+                            <a class="dropdown-item" href="#">Link 2</a>
+                            <a class="dropdown-item" href="#">Link 3</a>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbardrop" data-toggle="dropdown">
+                            Resources
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="livingrules_v106a.html">Living Rules v1.06A</a>
+                            <a class="dropdown-item" href="revgen.html">Revenue Generator</a>
+                        </div>
+                    </li>
 
-				<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-            </ul>
-        </div>  
+                    <li class="nav-item font-weight-bold"><a class="nav-link" href="#">
+                        About</a>
+                    </li>
+                </ul>
+            </div>  
 		</div>
     </nav>
 
