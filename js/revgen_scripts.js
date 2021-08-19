@@ -1,6 +1,138 @@
-var showDetails = 0;
+//var showDetails = 0;
 
 $(document).ready(function(){
+
+	// fire processUpload when the user uploads a file.
+	document.querySelector('#fileUpload').addEventListener('change', handleFileUpload, false);
+
+	// Setup file reading
+	var reader = new FileReader();
+	reader.onload = handleFileRead;
+
+	function handleFileUpload(event) {
+		var file = event.target.files[0];
+		reader.readAsText(file); // fires onload when done.
+	}
+
+	function handleFileRead(event) {
+		var myObj = JSON.parse(event.target.result);
+
+		let text = "";
+		for (let x in myObj) 
+		{
+			//text += x + " = " + myObj[x] + ", ";
+
+			switch(x) 
+			{
+				case "#numlegions":			SetDropdown("#numlegions", myObj[x]);		break;
+				case "#numfleets":			SetDropdown("#numfleets", myObj[x]);		break;
+				case "#lbtype1":			SetDropdown("#lbtype1", myObj[x]);			break;
+				case "#lbtype2":			SetDropdown("#lbtype2", myObj[x]);			break;
+				case "#lbtype3":			SetDropdown("#lbtype3", myObj[x]);			break;
+				case "#numactwars":			SetDropdown("#numactwars", myObj[x]);		break;
+				case "#droughtlevel":		SetDropdown("#droughtlevel", myObj[x]);		break;
+				case "#pontifexmaximus":	SetDropdown("#pontifexmaximus", myObj[x]);	break;
+				case "#rule201":			SetCheckbox("#rule201", myObj[x]);			break;
+				case "#rule202":			SetCheckbox("#rule202", myObj[x]);			break;
+				case "#factionactiveA":		SetCheckbox("#factionactiveA", myObj[x]);	break;
+				//case "#factionnameA":		SetCheckbox("#factionnameA", myObj[x]);		break;
+				case "#numsenatorsA":		SetDropdown("#numsenatorsA", myObj[x]);		break;
+				case "#numknightsA":		SetDropdown("#numknightsA", myObj[x]);		break;
+				case "#factionleaderA":		SetCheckbox("#factionleaderA", myObj[x]);	break;
+				case "#factionactiveB":		SetCheckbox("#factionactiveB", myObj[x]);	break;
+				//case "#factionnameB":		SetCheckbox("#factionnameB", myObj[x]);		break;
+				case "#numsenatorsB":		SetDropdown("#numsenatorsB", myObj[x]);		break;
+				case "#numknightsB":		SetDropdown("#numknightsB", myObj[x]);		break;
+				case "#factionleaderB":		SetCheckbox("#factionleaderB", myObj[x]);	break;
+				case "#factionactiveC":		SetCheckbox("#factionactiveC", myObj[x]);	break;
+				//case "#factionnameC":		SetCheckbox("#factionnameC", myObj[x]);		break;
+				case "#numsenatorsC":		SetDropdown("#numsenatorsC", myObj[x]);		break;
+				case "#numknightsC":		SetDropdown("#numknightsC", myObj[x]);		break;
+				case "#factionleaderC":		SetCheckbox("#factionleaderC", myObj[x]);	break;
+				case "#factionactiveD":		SetCheckbox("#factionactiveD", myObj[x]);	break;
+				//case "#factionnameD":		SetCheckbox("#factionnameD", myObj[x]);		break;
+				case "#numsenatorsD":		SetDropdown("#numsenatorsD", myObj[x]);		break;
+				case "#numknightsD":		SetDropdown("#numknightsD", myObj[x]);		break;
+				case "#factionleaderD":		SetCheckbox("#factionleaderD", myObj[x]);	break;
+				case "#factionactiveE":		SetCheckbox("#factionactiveE", myObj[x]);	break;
+				//case "#factionnameE":		SetCheckbox("#factionnameE", myObj[x]);		break;
+				case "#numsenatorsE":		SetDropdown("#numsenatorsE", myObj[x]);		break;
+				case "#numknightsE":		SetDropdown("#numknightsE", myObj[x]);		break;
+				case "#factionleaderE":		SetCheckbox("#factionleaderE", myObj[x]);	break;
+				case "#factionactiveF":		SetCheckbox("#factionactiveF", myObj[x]);	break;
+				//case "#factionnameF":		SetCheckbox("#factionnameF", myObj[x]);		break;
+				case "#numsenatorsF":		SetDropdown("#numsenatorsF", myObj[x]);		break;
+				case "#numknightsF":		SetDropdown("#numknightsF", myObj[x]);		break;
+				case "#factionleaderF":		SetCheckbox("#factionleaderF", myObj[x]);	break;
+				case "#conctf1":			SetDropdown("#conctf1", myObj[x]);			break;
+				case "#conctf2":			SetDropdown("#conctf2", myObj[x]);			break;
+				case "#conctf3":			SetDropdown("#conctf3", myObj[x]);			break;
+				case "#conctf4":			SetDropdown("#conctf4", myObj[x]);			break;
+				case "#conctf5":			SetDropdown("#conctf5", myObj[x]);			break;
+				case "#conctf6":			SetDropdown("#conctf6", myObj[x]);			break;
+				case "#conchf":				SetDropdown("#conchf", myObj[x]);			break;
+				case "#concmin":			SetDropdown("#concmin", myObj[x]);			break;
+				case "#conclc":				SetDropdown("#conclc", myObj[x]);			break;
+				case "#concaeg":			SetDropdown("#concaeg", myObj[x]);			break;
+				case "#droughtaeg":			SetCheckbox("#droughtaeg", myObj[x]);		break;
+				case "#concscg":			SetDropdown("#concscg", myObj[x]);			break;
+				case "#droughtscg":			SetCheckbox("#droughtscg", myObj[x]);		break;
+				case "#provaeg":			SetDropdown("#provaeg", myObj[x]);			break;
+				case "#provaeg_spoils":		SetCheckbox("#provaeg_spoils", myObj[x]);	break;
+				case "#provaeg_improved":	SetCheckbox("#provaeg_improved", myObj[x]);	break;
+				case "#provafr":			SetDropdown("#provafr", myObj[x]);			break;
+				case "#provafr_spoils":		SetCheckbox("#provafr_spoils", myObj[x]);	break;
+				case "#provafr_improved":	SetCheckbox("#provafr_improved", myObj[x]);	break;
+				case "#provasi":			SetDropdown("#provasi", myObj[x]);			break;
+				case "#provasi_spoils":		SetCheckbox("#provasi_spoils", myObj[x]);	break;
+				case "#provasi_improved":	SetCheckbox("#provasi_improved", myObj[x]);	break;
+				case "#provbit":			SetDropdown("#provbit", myObj[x]);			break;
+				case "#provbit_spoils":		SetCheckbox("#provbit_spoils", myObj[x]);	break;
+				case "#provbit_improved":	SetCheckbox("#provbit_improved", myObj[x]);	break;
+				case "#provcec":			SetDropdown("#provcec", myObj[x]);			break;
+				case "#provcec_spoils":		SetCheckbox("#provcec_spoils", myObj[x]);	break;
+				case "#provcec_improved":	SetCheckbox("#provcec_improved", myObj[x]);	break;
+				case "#provcrc":			SetDropdown("#provcrc", myObj[x]);			break;
+				case "#provcrc_spoils":		SetCheckbox("#provcrc_spoils", myObj[x]);	break;
+				case "#provcrc_improved":	SetCheckbox("#provcrc_improved", myObj[x]);	break;
+				case "#provgci":			SetDropdown("#provgci", myObj[x]);			break;
+				case "#provgci_spoils":		SetCheckbox("#provgci_spoils", myObj[x]);	break;
+				case "#provgci_improved":	SetCheckbox("#provgci_improved", myObj[x]);	break;
+				case "#provgna":			SetDropdown("#provgna", myObj[x]);			break;
+				case "#provgna_spoils":		SetCheckbox("#provgna_spoils", myObj[x]);	break;
+				case "#provgna_improved":	SetCheckbox("#provgna_improved", myObj[x]);	break;
+				case "#provgtr":			SetDropdown("#provgtr", myObj[x]);			break;
+				case "#provgtr_spoils":		SetCheckbox("#provgtr_spoils", myObj[x]);	break;
+				case "#provgtr_improved":	SetCheckbox("#provgtr_improved", myObj[x]);	break;
+				case "#provhci":			SetDropdown("#provhci", myObj[x]);			break;
+				case "#provhci_spoils":		SetCheckbox("#provhci_spoils", myObj[x]);	break;
+				case "#provhci_improved":	SetCheckbox("#provhci_improved", myObj[x]);	break;
+				case "#provhul":			SetDropdown("#provhul", myObj[x]);			break;
+				case "#provhul_spoils":		SetCheckbox("#provhul_spoils", myObj[x]);	break;
+				case "#provhul_improved":	SetCheckbox("#provhul_improved", myObj[x]);	break;
+				case "#provill":			SetDropdown("#provill", myObj[x]);			break;
+				case "#provill_spoils":		SetCheckbox("#provill_spoils", myObj[x]);	break;
+				case "#provill_improved":	SetCheckbox("#provill_improved", myObj[x]);	break;
+				case "#provmac":			SetDropdown("#provmac", myObj[x]);			break;
+				case "#provmac_spoils":		SetCheckbox("#provmac_spoils", myObj[x]);	break;
+				case "#provmac_improved":	SetCheckbox("#provmac_improved", myObj[x]);	break;
+				case "#provsec":			SetDropdown("#provsec", myObj[x]);			break;
+				case "#provsec_spoils":		SetCheckbox("#provsec_spoils", myObj[x]);	break;
+				case "#provsec_improved":	SetCheckbox("#provsec_improved", myObj[x]);	break;
+				case "#provsic":			SetDropdown("#provsic", myObj[x]);			break;
+				case "#provsic_spoils":		SetCheckbox("#provsic_spoils", myObj[x]);	break;
+				case "#provsic_improved":	SetCheckbox("#provsic_improved", myObj[x]);	break;
+				case "#provsyr":			SetDropdown("#provsyr", myObj[x]);			break;
+				case "#provsyr_spoils":		SetCheckbox("#provsyr_spoils", myObj[x]);	break;
+				case "#provsyr_improved":	SetCheckbox("#provsyr_improved", myObj[x]);	break;
+				default:
+				  // unknown control
+			  }
+		}
+
+		//document.getElementById("demo").innerHTML = text;	
+	}
+
 
 	// ----------------
 	// Submit the form
@@ -23,23 +155,243 @@ $(document).ready(function(){
 		return false;// Return false so that the the form is not cleared out
 	});
 
+	function GenerateRevenue(displayDetails)
+	{
+		// Generate the revenue log
+		var logRevenue = GenerateRevenueLog(displayDetails);
+
+//logRevenue = FormatOutput(logRevenue, "roll20");
+//logRevenue = FormatOutput(logRevenue, "html");
+
+		// Load the revenue log into the modal
+		$('.modal-body').html(FormatOutput(logRevenue, "html"));
+		$('.modal-body-roll20').text(FormatOutput(logRevenue, "roll20"));
+		//$('.modal-body-roll20').html(logRevenue, "roll20");
+
+		// Display the modal
+		$('#myModal').modal({show:true});
+		
+		return false;// Return false so that the the form is not cleared out
+	}
+
 	// ---------------------------------------
 	// Submit the form via the genrev button.
 	// ---------------------------------------
 	$("#genrev").click(function(){
-		showDetails = 0;
-		$("#revgenform").validate();
-		$("#revgenform").submit();
+//alert("genrev");
+		//showDetails = 0;
+		GenerateRevenue(0);
+		//$("#revgenform").validate();
+		//$("#revgenform").submit();
 	});	
 	
 	// ----------------------------------------------
 	// Submit the form via the genrevdetails button.
 	// ----------------------------------------------
 	$("#genrevdetails").click(function(){
-		showDetails = 1;
-		$("#revgenform").validate();
-		$("#revgenform").submit();
+//alert("genrevdetails");
+		//showDetails = 1;
+		GenerateRevenue(1);
+		//$("#revgenform").validate();
+		//$("#revgenform").submit();
 	});	
+	
+	// -----------------------------------
+	// Save the game state to a JSON file
+	// -----------------------------------
+	$("#savegame").click(function(){
+		// Get the data from the controls
+		//var downloadControl = document.getElementById("txtdownload");
+		//const obj = { hello: 'world' };
+		//const obj = { downloadKey: downloadControl.value };
+		//var fileContent = "My epic novel that I don't want to lose.";
+
+		//var obj = { hello: 'world2' };
+		var fileContent = BuildJSONFile();
+		
+		// Build the blob with JSON data
+		//const blob = new Blob([JSON.stringify(obj, null, 2)], { type: 'application/json' });
+		const blob = new Blob([fileContent], { type: 'text/plain' });
+		//var blob = new Blob([fileContent], { type: 'text/plain' });
+		
+		// Download the JSON file
+		var a = document.createElement('a');
+		a.download = 'Data.ror';
+		a.href = window.URL.createObjectURL(blob);
+		a.click();
+		//alert("Be sure to store your data to a safe place.");
+	});	
+	
+	// -------------------------------
+	// Load the game from a JSON file
+	// -------------------------------
+	$("#loadgame").click(function(){
+		$('#fileUpload').click();
+	});	
+
+	// ----------------------------------------
+	// Build the JSON file for saving the game
+	// ----------------------------------------
+	function BuildJSONFile()
+	{
+		var returnValue = "";
+
+		returnValue += JSONDropdown("#numlegions");
+		returnValue += JSONDropdown("#numfleets");
+		returnValue += JSONDropdown("#lbtype1");
+		returnValue += JSONDropdown("#lbtype2");
+		returnValue += JSONDropdown("#lbtype3");				
+		returnValue += JSONDropdown("#numactwars");
+		returnValue += JSONDropdown("#droughtlevel");
+		returnValue += JSONDropdown("#pontifexmaximus");
+		returnValue += JSONCheckbox("#rule201");
+		returnValue += JSONCheckbox("#rule202");
+		returnValue += JSONCheckbox("#factionactiveA");
+		//returnValue += JSONCheckbox("#factionnameA");
+		returnValue += JSONDropdown("#numsenatorsA");
+		returnValue += JSONDropdown("#numknightsA");
+		returnValue += JSONCheckbox("#factionleaderA");
+		returnValue += JSONCheckbox("#factionactiveB");
+		//returnValue += JSONCheckbox("#factionnameB");
+		returnValue += JSONDropdown("#numsenatorsB");
+		returnValue += JSONDropdown("#numknightsB");
+		returnValue += JSONCheckbox("#factionleaderB");	
+		returnValue += JSONCheckbox("#factionactiveC");
+		//returnValue += JSONCheckbox("#factionnameC");
+		returnValue += JSONDropdown("#numsenatorsC");
+		returnValue += JSONDropdown("#numknightsC");
+		returnValue += JSONCheckbox("#factionleaderC");		
+		returnValue += JSONCheckbox("#factionactiveD");
+		//returnValue += JSONCheckbox("#factionnameD");
+		returnValue += JSONDropdown("#numsenatorsD");
+		returnValue += JSONDropdown("#numknightsD");
+		returnValue += JSONCheckbox("#factionleaderD");
+		returnValue += JSONCheckbox("#factionactiveE");
+		//returnValue += JSONCheckbox("#factionnameE");
+		returnValue += JSONDropdown("#numsenatorsE");
+		returnValue += JSONDropdown("#numknightsE");
+		returnValue += JSONCheckbox("#factionleaderE");
+		returnValue += JSONCheckbox("#factionactiveF");
+		//returnValue += JSONCheckbox("#factionnameF");
+		returnValue += JSONDropdown("#numsenatorsF");
+		returnValue += JSONDropdown("#numknightsF");
+		returnValue += JSONCheckbox("#factionleaderF");
+		returnValue += JSONDropdown("#conctf1");
+		returnValue += JSONDropdown("#conctf2");
+		returnValue += JSONDropdown("#conctf3");
+		returnValue += JSONDropdown("#conctf4");
+		returnValue += JSONDropdown("#conctf5");
+		returnValue += JSONDropdown("#conctf6");
+		returnValue += JSONDropdown("#conchf");
+		returnValue += JSONDropdown("#concmin");
+		returnValue += JSONDropdown("#conclc");
+		returnValue += JSONDropdown("#concaeg");
+		returnValue += JSONCheckbox("#droughtaeg");
+		returnValue += JSONDropdown("#concscg");
+		returnValue += JSONCheckbox("#droughtscg");
+		returnValue += JSONDropdown("#provaeg");
+		returnValue += JSONCheckbox("#provaeg_spoils");
+		returnValue += JSONCheckbox("#provaeg_improved");
+		returnValue += JSONDropdown("#provafr");
+		returnValue += JSONCheckbox("#provafr_spoils");
+		returnValue += JSONCheckbox("#provafr_improved");
+		returnValue += JSONDropdown("#provasi");
+		returnValue += JSONCheckbox("#provasi_spoils");
+		returnValue += JSONCheckbox("#provasi_improved");
+		returnValue += JSONDropdown("#provbit");
+		returnValue += JSONCheckbox("#provbit_spoils");
+		returnValue += JSONCheckbox("#provbit_improved");
+		returnValue += JSONDropdown("#provcec");
+		returnValue += JSONCheckbox("#provcec_spoils");
+		returnValue += JSONCheckbox("#provcec_improved");
+		returnValue += JSONDropdown("#provcrc");
+		returnValue += JSONCheckbox("#provcrc_spoils");
+		returnValue += JSONCheckbox("#provcrc_improved");
+		returnValue += JSONDropdown("#provgci");
+		returnValue += JSONCheckbox("#provgci_spoils");
+		returnValue += JSONCheckbox("#provgci_improved");
+		returnValue += JSONDropdown("#provgna");
+		returnValue += JSONCheckbox("#provgna_spoils");
+		returnValue += JSONCheckbox("#provgna_improved");
+		returnValue += JSONDropdown("#provgtr");
+		returnValue += JSONCheckbox("#provgtr_spoils");
+		returnValue += JSONCheckbox("#provgtr_improved");
+		returnValue += JSONDropdown("#provhci");
+		returnValue += JSONCheckbox("#provhci_spoils");
+		returnValue += JSONCheckbox("#provhci_improved");
+		returnValue += JSONDropdown("#provhul");
+		returnValue += JSONCheckbox("#provhul_spoils");
+		returnValue += JSONCheckbox("#provhul_improved");
+		returnValue += JSONDropdown("#provill");
+		returnValue += JSONCheckbox("#provill_spoils");
+		returnValue += JSONCheckbox("#provill_improved");
+		returnValue += JSONDropdown("#provmac");
+		returnValue += JSONCheckbox("#provmac_spoils");
+		returnValue += JSONCheckbox("#provmac_improved");
+		returnValue += JSONDropdown("#provsec");
+		returnValue += JSONCheckbox("#provsec_spoils");
+		returnValue += JSONCheckbox("#provsec_improved");
+		returnValue += JSONDropdown("#provsic");
+		returnValue += JSONCheckbox("#provsic_spoils");
+		returnValue += JSONCheckbox("#provsic_improved");
+		returnValue += JSONDropdown("#provsyr");
+		returnValue += JSONCheckbox("#provsyr_spoils");
+		returnValue += JSONCheckbox("#provsyr_improved");
+
+		returnValue = '{' + returnValue.slice(0,-1) + '}';
+
+//alert(returnValue);
+
+		return returnValue;
+	}
+
+	// ------------------------------
+	// Build the JSON for a checkbox
+	// ------------------------------
+	function JSONCheckbox(control)
+	{
+		var returnValue = "";
+
+		returnValue = '  "' + control + '": "' + $(control).prop('checked') + '",';
+
+		return returnValue;
+	}
+
+	// ------------------------------
+	// Build the JSON for a dropdown
+	// ------------------------------
+	function JSONDropdown(control)
+	{
+		var returnValue = "";
+
+		returnValue = '  "' + control + '": "' + $(control).val() + '",';
+
+		return returnValue;
+	}
+
+	// --------------------------------------
+	// Set the value of the checkbox control
+	// --------------------------------------
+	function SetCheckbox(control, value)
+	{
+		//$("#" + provID + "_improved").attr('checked', 'checked');
+		if (value == "true")
+		{
+			$(control).attr('checked', true);
+		}
+		else
+		{
+			$(control).attr('checked', false);
+		}	
+	}
+
+	// --------------------------------------
+	// Set the value of the dropdown control
+	// --------------------------------------
+	function SetDropdown(control, value)
+	{
+		$(control).val(value).change();
+	}
 
 	// -------------------------------------------------
 	// Hide or show Pontifex Maximus label and control.
