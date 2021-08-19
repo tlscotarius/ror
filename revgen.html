@@ -548,12 +548,49 @@
 			</tr>
 		</table>
 
-	  <div class="text-center mt-3 mb-3">
-		  <button id="genrev" name="genrev" class="btn btn-danger mr-3" type="submit">Generate Revenue</button>  
-		  <button id="genrevdetails" name="genrevdetails" class="btn btn-danger" type="submit">Generate Revenue with Details</button>
-	  </div>
+		<!--
+	<div class="container mt-3 mb-3">
+		<div class="row text-center">
+			<div class="col text-left">
+				<button id="savegame" name="savegame" class="btn btn-danger mr-2" type="submit">Save Game</button>  
+			</div>
+			<div class="col text-right">
+				<button id="genrev" name="genrev" class="btn btn-danger mr-2" type="submit">Generate Revenue</button>  
+				<button id="genrevdetails" name="genrevdetails" class="btn btn-danger" type="submit">Generate Revenue with Details</button>
+			</div>
+		</div>
+	</div>
+-->
 		 
 	</form>
+
+	<!--
+	<span class="custom-file" id="customFile" lang="es">
+		<input type="file" name="files[]" id="fileUpload" class="custom-file-input">
+		<label class="custom-file-label" for="exampleInputFile">
+			Select file...
+		</label>
+	</span>
+	-->
+
+	<!-- <input id="myInput" type="file" style="visibility:hidden" /> -->
+	<!-- <input type="button" value="Show Dialog" onclick="$('#myInput').click();" /> -->
+	<input type="file" name="files[]" id="fileUpload" style="visibility:hidden" >
+	<!--<input type="button" value="Load Game" onclick="$('#fileUpload').click();" />-->
+
+	<div class="container mt-3 mb-3">
+		<div class="row text-center">
+			<div class="col text-left">
+				<button id="savegame" name="savegame" class="btn btn-danger mr-2" type="submit">Save Game</button>  
+				<!--<button id="loadgame" name="loadgame" class="btn btn-danger mr-2" onclick="$('#fileUpload').click();" >Load Game</button>-->
+				<button id="loadgame" name="loadgame" class="btn btn-danger mr-2" >Load Game</button>
+			</div>
+			<div class="col text-right">
+				<button id="genrev" name="genrev" class="btn btn-danger mr-2" type="submit">Generate Revenue</button>  
+				<button id="genrevdetails" name="genrevdetails" class="btn btn-danger" type="submit">Generate Revenue with Details</button>
+			</div>
+		</div>	
+	</div>
 
  	<!-- <textarea class="form-control mt-3 mb-3" id="output" name="output" placeholder="Revenue Output" ></textarea> -->
 
@@ -585,6 +622,9 @@
         </div>
     </div>
 </div>
+
+
+<!-- <p id="demo"></p> -->
 
 
 <!-- Custom scripts -->
