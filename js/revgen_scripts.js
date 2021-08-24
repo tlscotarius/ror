@@ -216,7 +216,7 @@ $(document).ready(function(){
 		
 		// Download the JSON file
 		var a = document.createElement('a');
-		a.download = 'Data.ror';
+		a.download = 'RevGen.ror';
 		a.href = window.URL.createObjectURL(blob);
 		a.click();
 		//alert("Be sure to store your data to a safe place.");
@@ -352,7 +352,7 @@ $(document).ready(function(){
 	{
 		var returnValue = "";
 
-		returnValue = '  "' + control + '": "' + $(control).prop('checked') + '",';
+		returnValue = '"' + control + '":"' + $(control).prop('checked') + '",';
 
 		return returnValue;
 	}
@@ -364,7 +364,7 @@ $(document).ready(function(){
 	{
 		var returnValue = "";
 
-		returnValue = '  "' + control + '": "' + $(control).val() + '",';
+		returnValue = '"' + control + '":"' + $(control).val() + '",';
 
 		return returnValue;
 	}
