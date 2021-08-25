@@ -467,16 +467,6 @@ $(document).ready(function(){
 				break;
 			case "html":
 				// Convert input to HTML format
-				
-				/*
-				outputValue = outputValue.replace(/:TableStart:/g, '<table>');
-				outputValue = outputValue.replace(/:HeaderStart:/g, '<thead><tr><th colspan=\"2\">');
-				outputValue = outputValue.replace(/:HeaderEnd:/g, "</th></tr></thead>");
-				outputValue = outputValue.replace(/:RowStart:/g, "<tr><td>");
-				outputValue = outputValue.replace(/:RowEnd:/g, "</td></tr>");
-				outputValue = outputValue.replace(/:RowDelimiter:/g, "</td><td>");
-				outputValue = outputValue.replace(/:TableEnd:/g, "</table>");
-				*/
 				outputValue = outputValue.replace(/:TableStart:/g, '<table class=\"table table-striped\">');
 				outputValue = outputValue.replace(/:HeaderStart:/g, '<thead><tr><th style=\"padding: .25rem;\" colspan=\"2\">');
 				outputValue = outputValue.replace(/:HeaderEnd:/g, "</th></tr></thead>");
@@ -701,7 +691,7 @@ $(document).ready(function(){
 		var resultLog 	 = "";
 
 		// If a governor is assigned to the province
-		if ($("#" + provID).val() != "")
+		if ($("#" + provID).val() != "" && $("#" + provID).val() != "X")
 		{
 			// Generate State spoils
 			if ($("#" + provID + "_improved").is(":checked"))						
