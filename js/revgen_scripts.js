@@ -539,7 +539,7 @@ $(document).ready(function(){
 		provRev = GetProvinceStateRevenue("provsic", "Sicilia",             2,  1, -2, 1,  1,  2);stateRevenue += provRev[0];stateLogDetail += provRev[1];
 		provRev = GetProvinceStateRevenue("provsyr", "Syria",               1,  1,  0, 1,  1,  0);stateRevenue += provRev[0];stateLogDetail += provRev[1];
 				
-		factLogSum = ":TableStart:" + ":HeaderStart:Revenue Summary:RowEnd:" + ":RowStart:State:RowDelimiter:" + stateRevenue + ":RowEnd:" + factLogSum + ":TableEnd:";
+		factLogSum = ":TableStart:" + ":HeaderStart:Revenue Summary (Totals):RowEnd:" + ":RowStart:State:RowDelimiter:" + stateRevenue + ":RowEnd:" + factLogSum + ":TableEnd:";
 		if (stateLogDetail != ""){stateLogDetail = ":TableStart:" + ":HeaderStart:State Details:RowEnd:" + stateLogDetail + ":TableEnd:";}
 		if (stateLogRemind != ""){stateLogRemind = ":TableStart:" + ":HeaderStart:State Reminders:RowEnd:" + stateLogRemind + ":TableEnd:";}
 
@@ -624,7 +624,7 @@ $(document).ready(function(){
 		
 			factRevenue += revConcessions;
 			
-			// Temple Donations
+			// Temple Donations for Pontifex Maximus
 			var revTempleDonations = 0;
 			var revTempleLog = "";
 			if ($("#rule201").is(":checked") && $("#pontifexmaximus").val() == factionID) {
@@ -660,6 +660,7 @@ $(document).ready(function(){
 			// Build faction detail log
 			factLogDetail = ":TableStart:" + 
 							":HeaderStart:" + factName + " Details:HeaderEnd:" +
+							":RowStart:Total:RowDelimiter:" + factRevenue + ":RowEnd:" +
 							":RowStart:Senators:RowDelimiter:" + revSenators + ":RowEnd:" +
 							":RowStart:Knights:RowDelimiter:" + revKnights + ":RowEnd:" +
 							":RowStart:Concessions:RowDelimiter:" + revConcessions + ":RowEnd:" + 
@@ -716,7 +717,7 @@ $(document).ready(function(){
 	}
 	
 	// -------------------------------------------------------------------------------------------
-	// Generate the state revenue for the given faction.  Also handles improving the province.
+	// Generate the provincial revenue for the given faction.  Also handles improving the province.
 	// Does handle situations where faction spoliation results in a negative value. In this case, 
 	// negative values will be applied to the total State Revenue.
 	// -------------------------------------------------------------------------------------------
@@ -803,6 +804,8 @@ $(document).ready(function(){
 					factLogRemind += ":RowStart:Spend Local Taxes (" + provUnimpTaxes + ") for " + provName + ":RowEnd:";
 				}
 			}
+
+			factLogRemind += ":RowStart:Update Term marker for Governor of " + provName + ":RowEnd:";
 		}
 		
 		return [factRevenue, factLogDetail, factLogRemind, stateRevenue];
